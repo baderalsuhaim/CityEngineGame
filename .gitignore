@@ -1,0 +1,12 @@
+# directories
+/build
+/data
+/dist
+/out
+/nbproject
+/.idea
+
+# files
+build.xml
+*.iml
+manifest.mf
