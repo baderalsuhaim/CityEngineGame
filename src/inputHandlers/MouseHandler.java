@@ -1,4 +1,4 @@
-package game;
+package inputHandlers;
 
 import city.cs.engine.*;
 import org.jbox2d.common.Vec2;
@@ -20,6 +20,7 @@ public class MouseHandler extends MouseAdapter {
     private WorldView view;
 
     public MouseHandler(WorldView view) {
+
         this.view = view;
     }
 
@@ -27,6 +28,7 @@ public class MouseHandler extends MouseAdapter {
      * Create a bowling ball at the current mouse position.
      * @param e event object containing the mouse position
      */
+
     public void mousePressed(MouseEvent e) {
         DynamicBody ball = new DynamicBody(view.getWorld(), ballShape);
         ball.setPosition(view.viewToWorld(e.getPoint()));
