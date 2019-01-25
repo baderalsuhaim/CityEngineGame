@@ -56,7 +56,7 @@ public class Game {
         Shape smallCircle = new CircleShape(3);
         Body sCircle = new DynamicBody(world, smallCircle);
         sCircle.addImage(new BodyImage("data/earth_PNG23.png",6));
-        sCircle.setPosition(new Vec2(4, -10));
+        sCircle.setPosition(new Vec2(-9, 6.5f));
 
 
 
@@ -64,7 +64,7 @@ public class Game {
         view = new UserView(world, 500, 500);
 
         // uncomment this to draw a 1-metre grid over the view
-        view.setGridResolution(1);
+        //view.setGridResolution(1);
 
         // add some mouse actions
         // add this to the view, so coordinates are relative to the view

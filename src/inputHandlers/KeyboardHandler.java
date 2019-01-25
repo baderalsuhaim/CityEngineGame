@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.security.Key;
 
 
 public class KeyboardHandler extends KeyAdapter {
@@ -42,6 +43,14 @@ public class KeyboardHandler extends KeyAdapter {
         }
     }
 
+    public void keyReleased(KeyEvent e){
+        int code = e.getKeyCode();
+        if(code == KeyEvent.VK_1){
+            walkerObj.stopWalking();
+        } else if (code == KeyEvent.VK_2) {
+            walkerObj.stopWalking();
+        }
 
+    }
 
 }
