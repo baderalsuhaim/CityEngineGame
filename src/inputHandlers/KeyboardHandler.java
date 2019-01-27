@@ -27,27 +27,29 @@ public class KeyboardHandler extends KeyAdapter {
     public KeyboardHandler (World world, UserView userView){
         this.world = world;
         this.userView = userView;
-        walkerObj = new Walker(world, new CircleShape(6));
+        walkerObj = new Walker(world, new CircleShape(3));
         walkerObj.setPosition(new Vec2(1,-10));
-        walkerObj.setFillColor(Color.red);
+        walkerObj.addImage(new BodyImage("data/earth_PNG23.png",6));
 
     }
 
     @Override
     public void keyPressed(KeyEvent e){
         int code = e.getKeyCode();
-        if(code == KeyEvent.VK_1) {
+        if(code == KeyEvent.VK_LEFT) {
             walkerObj.startWalking(-WALKING_SPEED);
-        } else if (code == KeyEvent.VK_2){
+        } else if (code == KeyEvent.VK_RIGHT){
             walkerObj.startWalking(WALKING_SPEED);
+        } else if (code == KeyEvent.VK_SPACE){
+            walkerObj.jump(6f);
         }
     }
 
     public void keyReleased(KeyEvent e){
         int code = e.getKeyCode();
-        if(code == KeyEvent.VK_1){
+        if(code == KeyEvent.VK_LEFT){
             walkerObj.stopWalking();
-        } else if (code == KeyEvent.VK_2) {
+        } else if (code == KeyEvent.VK_RIGHT) {
             walkerObj.stopWalking();
         }
 

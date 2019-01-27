@@ -51,14 +51,6 @@ public class Game {
         Body bird = new DynamicBody(world, birdShape);
         bird.addImage(new BodyImage("data/yellow-bird.gif", 2.25f));
         bird.setPosition(new Vec2(8, -10));
-        
-        // add more bodies here
-        Shape smallCircle = new CircleShape(3);
-        Body sCircle = new DynamicBody(world, smallCircle);
-        sCircle.addImage(new BodyImage("data/earth_PNG23.png",6));
-        sCircle.setPosition(new Vec2(-9, 6.5f));
-
-
 
         // make a view
         view = new UserView(world, 500, 500);
@@ -88,7 +80,7 @@ public class Game {
         frame.setVisible(true);
 
         //uncomment this to make a debugging view
-        //JFrame debugView = new DebugViewer(world, 500, 500);
+        JFrame debugView = new DebugViewer(world, 500, 500);
 
         // start!
         world.start();
