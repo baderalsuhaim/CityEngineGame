@@ -1,6 +1,7 @@
 package inputHandlers;
 
 import city.cs.engine.*;
+import game.WalkingMan;
 import org.jbox2d.common.Vec2;
 
 import java.awt.*;
@@ -18,16 +19,11 @@ public class KeyboardHandler extends KeyAdapter {
 
 
 
-    /*
-     * @param world the world that the keyboard input will be sent to
-     * @param userView the view that the keyboard input will be sent to
-     */
-
 
     public KeyboardHandler (World world, UserView userView){
         this.world = world;
         this.userView = userView;
-        walkerObj = new Walker(world, new CircleShape(3));
+        walkerObj = new WalkingMan(world, 100,100);
         walkerObj.setPosition(new Vec2(1,-10));
         walkerObj.addImage(new BodyImage("data/earth_PNG23.png",6));
 
@@ -40,7 +36,7 @@ public class KeyboardHandler extends KeyAdapter {
             walkerObj.startWalking(-WALKING_SPEED);
         } else if (code == KeyEvent.VK_RIGHT){
             walkerObj.startWalking(WALKING_SPEED);
-        } else if (code == KeyEvent.VK_SPACE){
+        } else if (code == KeyEvent.VK_UP){
             walkerObj.jump(6f);
         }
     }

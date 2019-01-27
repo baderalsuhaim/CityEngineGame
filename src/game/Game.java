@@ -36,21 +36,6 @@ public class Game {
         Shape platform1Shape = new BoxShape(4, 0.5f);
         Body platform1 = new StaticBody(world, platform1Shape);
         platform1.setPosition(new Vec2(-9, 5.5f));
-        
-        // add another platform here
-        Shape platform2Shape = new BoxShape(4, 0.5f);
-        Body platform2 = new StaticBody(world, platform2Shape);
-        platform2.setAngle(0.3f);
-        platform2.setFillColor(Color.red);
-        platform2.setPosition(new Vec2(9, 5.5f));
-
-        // make a character
-        Shape birdShape = new PolygonShape(
-            0.149f,0.975f, 0.775f,0.193f, 0.772f,-0.099f, 0.401f,-0.928f,
-                  -0.36f,-0.922f, -0.719f,-0.025f, -0.725f,0.163f, -0.14f,0.972f);
-        Body bird = new DynamicBody(world, birdShape);
-        bird.addImage(new BodyImage("data/yellow-bird.gif", 2.25f));
-        bird.setPosition(new Vec2(8, -10));
 
         // make a view
         view = new UserView(world, 500, 500);
@@ -70,7 +55,7 @@ public class Game {
         frame.setLocationByPlatform(true);
         // display the world in the window
         frame.add(view);
-
+        // adds the key listener so it listens for key input
         frame.addKeyListener(new KeyboardHandler(world, view));
         // don't let the game window be resized
         frame.setResizable(false);
@@ -80,7 +65,7 @@ public class Game {
         frame.setVisible(true);
 
         //uncomment this to make a debugging view
-        JFrame debugView = new DebugViewer(world, 500, 500);
+        //JFrame debugView = new DebugViewer(world, 500, 500);
 
         // start!
         world.start();
