@@ -32,4 +32,5 @@ public class MouseHandler extends MouseAdapter {
         ball.setPosition(view.viewToWorld(e.getPoint()));
         ball.addImage(ballImage);
     }
+
 }
