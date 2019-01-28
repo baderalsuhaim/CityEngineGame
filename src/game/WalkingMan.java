@@ -15,7 +15,7 @@ public class WalkingMan extends Walker {
 
 
 
-   public WalkingMan(World world, int health, int stamina) {
+    public WalkingMan(World world, int health, int stamina) {
 
 
         super(world, new PolygonShape(-0.744f,-1.026f, -0.933f,0.651f,
@@ -26,18 +26,18 @@ public class WalkingMan extends Walker {
         //this.addImage(walkerImg.getBodyImage());
         //this.addImage(new BodyImage("data/Survivor.png", 2.25f));
 
-   }
+    }
 
-   @Override
-   public void startWalking(float speed){
-       super.startWalking(speed);
-       this.removeAllImages();
-       AttachedImage img = new AttachedImage(this, new BodyImage("data/Survivor.png", 2.5f), 1, 0, new Vec2(0, 0));
+    @Override
+    public void startWalking(float speed){
+        super.startWalking(speed);
+        this.removeAllImages();
+        AttachedImage img = new AttachedImage(this, new BodyImage("data/Survivor.png", 2.5f), 1, 0, new Vec2(0, 0));
 
-       if(speed < 0) {
-           img.flipHorizontal();
-       }
-   }
+        if(speed < 0) {
+            img.flipHorizontal();
+        }
+    }
 
     public int getHealth(){
         return health;

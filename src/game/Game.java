@@ -38,6 +38,7 @@ public class Game {
         Body platform1 = new StaticBody(world, platform1Shape);
         platform1.setPosition(new Vec2(-9, 5.5f));
 
+
         // make a view
         view = new UserView(world, 500, 500);
 
