@@ -11,8 +11,9 @@ import java.awt.event.KeyListener;
 import java.security.Key;
 
 
-public class KeyboardHandler extends KeyAdapter {
-    private static final float WALKING_SPEED = 4;
+
+public class KeyboardHandler extends KeyAdapter  {
+    private static final float WALKING_SPEED = 6;
     private World world;
     private UserView userView;
     private Walker walkerObj;
@@ -23,6 +24,7 @@ public class KeyboardHandler extends KeyAdapter {
         this.world = world;
         this.userView = userView;
         walkerObj = new WalkingMan(world, 100,100);
+        walkerObj.setPosition(new Vec2(1,-10));
 
     }
 
@@ -31,7 +33,6 @@ public class KeyboardHandler extends KeyAdapter {
         int code = e.getKeyCode();
         if(code == KeyEvent.VK_A) {
             walkerObj.startWalking(-WALKING_SPEED);
-
         } else if (code == KeyEvent.VK_D){
             walkerObj.startWalking(WALKING_SPEED);
         } else if (code == KeyEvent.VK_W){
@@ -39,6 +40,7 @@ public class KeyboardHandler extends KeyAdapter {
         }
     }
 
+    @Override
     public void keyReleased(KeyEvent e){
         int code = e.getKeyCode();
         if(code == KeyEvent.VK_A){

@@ -28,7 +28,7 @@ public class Game {
         world = new World();
 
         // make the ground
-        Shape shape = new BoxShape(11, 0.5f);
+        Shape shape = new BoxShape(20, 0.5f);
         Body ground = new StaticBody(world, shape);
         ground.setPosition(new Vec2(0, -11.5f));
 
