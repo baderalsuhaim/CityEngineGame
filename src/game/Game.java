@@ -31,6 +31,7 @@ public class Game {
         Shape shape = new BoxShape(20, 0.5f);
         Body ground = new StaticBody(world, shape);
         ground.setPosition(new Vec2(0, -11.5f));
+        ground.setFillColor(Color.red);
 
         // make a platform
         Shape platform1Shape = new BoxShape(4, 0.5f);
