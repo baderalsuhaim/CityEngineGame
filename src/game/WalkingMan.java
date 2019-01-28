@@ -31,18 +31,12 @@ public class WalkingMan extends Walker {
    @Override
    public void startWalking(float speed){
        super.startWalking(speed);
+       this.removeAllImages();
+       AttachedImage img = new AttachedImage(this, new BodyImage("data/Survivor.png", 2.5f), 1, 0, new Vec2(0, 0));
 
-       if(speed > 0){
-           this.addImage(walkerImg.getBodyImage());
-           System.out.println("RIGHT");
-       } else {
-           this.removeImage(walkerImg);
-           AttachedImage image = new AttachedImage(this, walkImg,2.25f,0f,vec2);
-           image.flipHorizontal();
-           this.addImage(image.getBodyImage());
-           System.out.println("LEFT");
+       if(speed < 0) {
+           img.flipHorizontal();
        }
-
    }
 
     public int getHealth(){
