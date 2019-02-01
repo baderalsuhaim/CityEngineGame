@@ -16,28 +16,16 @@ import java.awt.*;
 public class Game {
 
     /** The World in which the bodies move and interact. */
-    private World world;
+    private WorldView world;
 
     /** A graphical display of the world (a specialised JPanel). */
     private UserView view;
 
     /** Initialise a new Game. */
-    public Game() {
+    private Game() {
 
         // make the world
-        world = new World();
-
-        // make the ground
-        Shape shape = new BoxShape(20, 0.5f);
-        Body ground = new StaticBody(world, shape);
-        ground.setPosition(new Vec2(0, -11.5f));
-        ground.setFillColor(Color.red);
-
-        // make a platform
-        Shape platform1Shape = new BoxShape(4, 0.5f);
-        Body platform1 = new StaticBody(world, platform1Shape);
-        platform1.setPosition(new Vec2(-9, 5.5f));
-
+        world = new WorldView();
 
         // make a view
         view = new UserView(world, 500, 500);
@@ -50,7 +38,7 @@ public class Game {
         view.addMouseListener(new MouseHandler(view));
 
         // display the view in a frame
-        final JFrame frame = new JFrame("Basic world");
+        final JFrame frame = new JFrame("Game");
 
         // quit the application when the game window is closed
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -58,7 +46,8 @@ public class Game {
         // display the world in the window
         frame.add(view);
         // adds the key listener so it listens for key input
-        frame.addKeyListener(new KeyboardHandler(world, view));
+        KeyboardHandler keyboardHandler = new KeyboardHandler(world, view);
+        frame.addKeyListener(keyboardHandler);
         // don't let the game window be resized
         frame.setResizable(false);
         // size the game window to fit the world view
