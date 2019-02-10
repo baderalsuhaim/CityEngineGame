@@ -1,4 +1,8 @@
-package inputHandlers;
+/**
+ * In the future this will make new platforms upon mouse press for the character to escape
+ */
+
+/*package inputHandlers;
 
 import city.cs.engine.*;
 
@@ -9,9 +13,9 @@ public class MouseHandler extends MouseAdapter {
 
     private static final float RADIUS = 0.5f;
     
-    private static final Shape ballShape = new CircleShape(RADIUS);
+    private static final Shape platShape = new BoxShape(4,.5f);
     
-    private static final BodyImage ballImage = new BodyImage("data/bowl.png", 2*RADIUS);
+
     
     private WorldView view;
 
@@ -20,16 +24,12 @@ public class MouseHandler extends MouseAdapter {
         this.view = view;
     }
 
-    /**
-     * Create a bowling ball at the current mouse position.
-     * @param e event object containing the mouse position
-     **/
 
-    public void mousePressed(MouseEvent e) {
-        DynamicBody ball = new DynamicBody(view.getWorld(), ballShape);
+   public void mousePressed(MouseEvent e) {
+        DynamicBody ball = new DynamicBody(view.getWorld(), platShape);
         ball.setPosition(view.viewToWorld(e.getPoint()));
-        ball.addImage(ballImage);
+
     }
 
-}
+} */
 

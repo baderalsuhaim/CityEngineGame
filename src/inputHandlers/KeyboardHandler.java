@@ -1,6 +1,7 @@
 package inputHandlers;
 
 import city.cs.engine.*;
+import game.Collisions.Bullet;
 import game.Collisions.CoinPickup;
 import game.WalkingMan;
 import org.jbox2d.common.Vec2;
@@ -16,7 +17,7 @@ public class KeyboardHandler extends KeyAdapter  {
     private World world;
     private UserView userView;
     private WalkingMan walkerObj;
-
+    private Bullet bullet;
 
 
     public KeyboardHandler (World world, UserView userView){
@@ -25,6 +26,7 @@ public class KeyboardHandler extends KeyAdapter  {
         walkerObj = new WalkingMan(world, 100,100);
         walkerObj.setPosition(new Vec2(1,-10));
         walkerObj.addCollisionListener(new CoinPickup(walkerObj));
+        walkerObj.setGravityScale(3);
 
     }
 
@@ -36,7 +38,7 @@ public class KeyboardHandler extends KeyAdapter  {
         } else if (code == KeyEvent.VK_D){
             walkerObj.startWalking(WALKING_SPEED);
         } else if (code == KeyEvent.VK_W){
-            walkerObj.jump(6f);
+            walkerObj.jump(23f);
         }
     }
 
@@ -45,10 +47,10 @@ public class KeyboardHandler extends KeyAdapter  {
         int code = e.getKeyCode();
         if(code == KeyEvent.VK_A){
             walkerObj.stopWalking();
-            //walkerObj.setLinearVelocity(new Vec2(0,0));
+            walkerObj.setLinearVelocity(new Vec2(0,0));
         } else if (code == KeyEvent.VK_D) {
             walkerObj.stopWalking();
-            //walkerObj.setLinearVelocity(new Vec2(0,0));
+            walkerObj.setLinearVelocity(new Vec2(0,0));
         }
 
     }

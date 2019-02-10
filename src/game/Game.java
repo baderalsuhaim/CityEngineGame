@@ -3,7 +3,7 @@ package game;
 import city.cs.engine.*;
 import city.cs.engine.Shape;
 import inputHandlers.KeyboardHandler;
-import inputHandlers.MouseHandler;
+//import inputHandlers.MouseHandler;
 import org.jbox2d.common.Vec2;
 
 import javax.swing.JFrame;
@@ -33,9 +33,8 @@ public class Game {
         // uncomment this to draw a 1-metre grid over the view
         //view.setGridResolution(1);
 
-        // add some mouse actions
-        // add this to the view, so coordinates are relative to the view
-        view.addMouseListener(new MouseHandler(view));
+        // add mouse listener
+        //view.addMouseListener(new MouseHandler(view));
 
         // display the view in a frame
         final JFrame frame = new JFrame("Game");
@@ -48,8 +47,7 @@ public class Game {
         // adds the key listener so it listens for key input
         KeyboardHandler keyboardHandler = new KeyboardHandler(world, view);
         frame.addKeyListener(keyboardHandler);
-        // don't let the game window be resized
-        frame.setResizable(false);
+
         // size the game window to fit the world view
         frame.pack();
         // make the window visible
@@ -66,5 +64,6 @@ public class Game {
     public static void main(String[] args) {
 
       new Game();
+
     }
 }

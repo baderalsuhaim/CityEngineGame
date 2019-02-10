@@ -1,8 +1,9 @@
 package game;
 
 import city.cs.engine.*;
-import game.Collisions.CoinPickup;
 import org.jbox2d.common.Vec2;
+import javax.swing.*;
+import java.awt.*;
 
 
 public class WalkingMan extends Walker {
@@ -11,13 +12,16 @@ public class WalkingMan extends Walker {
     private int health;
     private int stamina;
     private int coinCount;
-    private static final BodyImage walkImg = new BodyImage("data/Survivor.png");
+    private static final BodyImage walkImg = new BodyImage("data/Characters/Survivor.png");
     private static final Vec2 vec2 = new Vec2(0,0);
     private final AttachedImage walkerImg = new AttachedImage(this, walkImg,2.25f,0f, vec2);
+    private Component frame;
+
 
 
 
     public WalkingMan(World world, int health, int stamina) {
+
 
 
         super(world, new PolygonShape(-0.744f,-1.026f, -0.933f,0.651f,
@@ -29,11 +33,13 @@ public class WalkingMan extends Walker {
 
     }
 
+
+
     @Override
     public void startWalking(float speed){
         super.startWalking(speed);
         this.removeAllImages();
-        AttachedImage img = new AttachedImage(this, new BodyImage("data/Survivor.png",
+        AttachedImage img = new AttachedImage(this, new BodyImage("data/Characters/Survivor.png",
                 2.5f), 1, 0, new Vec2(0, 0));
 
         if(speed < 0) {
@@ -42,21 +48,38 @@ public class WalkingMan extends Walker {
     }
 
 
+    // returns the value of health
     public int getHealth(){
-        return health;
+        return this.health;
     }
-
+    //returns the value of stamina
     public int getStamina(){
-        return stamina;
+        return this.stamina;
+    }
+    //returns the value of coin count
+    public int getCoinCount(){
+        return this.coinCount;
+    }
+    // sets the value for coint count
+    public void setCoinCount(int coinCount){
+        this.coinCount = coinCount;
     }
 
-    public int getCoinCount(){
-        return coinCount;
-    }
 
     public void incrementCoinCount(){
         coinCount++;
         System.out.println("COIN COUNT: " + coinCount);
+
+
+        // displays the dialog window when all coins are collected and exits the game when pressed OK
+        // a better implementation of this will be made for milestone 2
+        if(coinCount == 4){
+            System.out.println("Congratulations! You collected all the coins!");
+            JOptionPane.showMessageDialog(frame, "Game over");
+            System.exit(0);
+
+
+        }
     }
 
 

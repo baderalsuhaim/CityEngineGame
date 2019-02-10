@@ -9,31 +9,46 @@ import java.awt.*;
 
 public class WorldView extends World {
 
-    private StaticBody ground;
-
-    public WorldView(){
+    public WorldView() {
         super(60);
 
         // make the ground
         Shape shape = new BoxShape(20, 0.5f);
-        ground = new StaticBody(this, shape);
+        StaticBody ground = new StaticBody(this, shape);
         ground.setPosition(new Vec2(0, -11.5f));
         ground.setFillColor(Color.red);
 
         // make a platform
-        Shape platform1Shape = new BoxShape(4, 0.5f);
+        Shape platform1Shape = new BoxShape(4, .5f);
         Body platform1 = new StaticBody(this, platform1Shape);
-        platform1.setPosition(new Vec2(-9, 5.5f));
+        platform1.setPosition(new Vec2(-5, 3.5f));
 
+        Shape platform2Shape = new BoxShape(10,.5f);
+        Body platform2 = new StaticBody(this, platform2Shape);
+        platform2.setPosition(new Vec2(10,-4.5f));
+
+        //make a coin
         Body coin = new Coins(this);
-        coin.setPosition(new Vec2(6,-10));
+        coin.setPosition(new Vec2(6, -10));
 
+        //make a coin
         Body coin2 = new Coins(this);
-        coin2.setPosition(new Vec2(10,-10));
+        coin2.setPosition(new Vec2(10, -10));
 
-    }
+        //make a coin
+        Body coin3 = new Coins(this);
+        coin3.setPosition(new Vec2(10, -3.5f));
 
-    public StaticBody getGround() {
-        return ground;
+        //make a coin
+        Body coin4 = new Coins(this);
+        coin4.setPosition(new Vec2(-5, 4.5f));
+
+
+
+
+
+
     }
 }
+
+
