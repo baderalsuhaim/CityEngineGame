@@ -1,7 +1,7 @@
 package inputHandlers;
 
 import city.cs.engine.*;
-import game.Collisions.Bullet;
+//import game.Collisions.Bullet;
 import game.Collisions.CoinPickup;
 import game.WalkingMan;
 import org.jbox2d.common.Vec2;
@@ -13,11 +13,11 @@ import java.awt.event.KeyEvent;
 
 
 public class KeyboardHandler extends KeyAdapter  {
-    private static final float WALKING_SPEED = 6;
+    private static final float WALK_SPEED = 6;
     private World world;
     private UserView userView;
     private WalkingMan walkerObj;
-    private Bullet bullet;
+    //private Bullet bullet;
 
 
     public KeyboardHandler (World world, UserView userView){
@@ -34,9 +34,9 @@ public class KeyboardHandler extends KeyAdapter  {
     public void keyPressed(KeyEvent e){
         int code = e.getKeyCode();
         if(code == KeyEvent.VK_A) {
-            walkerObj.startWalking(-WALKING_SPEED);
+            walkerObj.startWalking(-WALK_SPEED);
         } else if (code == KeyEvent.VK_D){
-            walkerObj.startWalking(WALKING_SPEED);
+            walkerObj.startWalking(WALK_SPEED);
         } else if (code == KeyEvent.VK_W){
             walkerObj.jump(23f);
         }
