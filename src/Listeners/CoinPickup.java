@@ -1,14 +1,14 @@
 /**
- * Coin pickup functionality to the game
+ * Coin pickup functionality to the Game
  */
 
 
-package game.Collisions;
+package Listeners;
 
 import city.cs.engine.CollisionEvent;
 import city.cs.engine.CollisionListener;
-
-import game.WalkingMan;
+import Game.Coins;
+import Game.WalkingMan;
 
 public class CoinPickup implements CollisionListener {
 

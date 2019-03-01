@@ -2,7 +2,7 @@
  * In the future this will make new platforms upon mouse press for the character to escape
  */
 
-/*package inputHandlers;
+/*package Game.inputHandlers;
 
 import city.cs.engine.*;
 
@@ -17,9 +17,9 @@ public class MouseHandler extends MouseAdapter {
     
 
     
-    private WorldView view;
+    private LevelOne view;
 
-    public MouseHandler(WorldView view) {
+    public MouseHandler(LevelOne view) {
 
         this.view = view;
     }

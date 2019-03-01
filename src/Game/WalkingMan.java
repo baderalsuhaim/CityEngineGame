@@ -1,4 +1,4 @@
-package game;
+package Game;
 
 import city.cs.engine.*;
 import org.jbox2d.common.Vec2;
@@ -70,16 +70,6 @@ public class WalkingMan extends Walker {
         coinCount++;
         System.out.println("COIN COUNT: " + coinCount);
 
-
-        // displays the dialog window when all coins are collected and exits the game when pressed OK
-        // a better implementation of this will be made for milestone 2
-        if(coinCount == 4){
-            System.out.println("Congratulations! You collected all the coins!");
-            JOptionPane.showMessageDialog(frame, "Game over");
-            System.exit(0);
-
-
-        }
     }
 
 

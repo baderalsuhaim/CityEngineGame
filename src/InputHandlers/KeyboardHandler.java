@@ -1,9 +1,9 @@
-package inputHandlers;
+package InputHandlers;
 
 import city.cs.engine.*;
-//import game.Collisions.Bullet;
-import game.Collisions.CoinPickup;
-import game.WalkingMan;
+//import Game.Bullet;
+import Listeners.CoinPickup;
+import Game.WalkingMan;
 import org.jbox2d.common.Vec2;
 
 import java.awt.event.KeyAdapter;

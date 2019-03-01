@@ -2,7 +2,7 @@
  * A class for making the coin object that the main walker need to collect
  */
 
-package game.Collisions;
+package Game;
 
 import city.cs.engine.*;
 import org.jbox2d.common.Vec2;

@@ -1,16 +1,19 @@
-package game;
+package LevelHandler;
 
 import city.cs.engine.*;
 import city.cs.engine.Shape;
-import game.Collisions.Coins;
+import Game.Coins;
+import Game.Game;
 import org.jbox2d.common.Vec2;
 
 import java.awt.*;
 
-public class WorldView extends World {
+public class LevelOne extends Levels {
 
-    public WorldView() {
-        super(60);
+    @Override
+    public void populateWorld(Game game) {
+        super.populateWorld(game);
+
 
         // make the ground
         Shape shape = new BoxShape(20, 0.5f);
@@ -44,10 +47,22 @@ public class WorldView extends World {
         coin4.setPosition(new Vec2(-5, 4.5f));
 
 
+    }
 
+    @Override
+    public Vec2 portalPos() {
+        return new Vec2(-10.4f, -9.6f);
+    }
 
+    @Override
+    public Vec2 startPos(){
+        return new Vec2(1, -10);
 
+    }
 
+    @Override
+    public boolean levelCompletion(){
+        return getWalkingMan().getCoinCount() == 4;
     }
 }
 

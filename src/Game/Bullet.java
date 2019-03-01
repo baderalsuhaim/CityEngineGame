@@ -5,13 +5,13 @@
 
 
 
-package game.Collisions;
+package Game;
 
-import city.cs.engine.*;
-import game.WalkingMan;
-import inputHandlers.KeyboardHandler;
-import org.jbox2d.common.Vec2;
-import java.awt.Color;
+import city.cs.engine.CircleShape;
+import city.cs.engine.DynamicBody;
+import city.cs.engine.World;
+
+import java.awt.*;
 
 
 

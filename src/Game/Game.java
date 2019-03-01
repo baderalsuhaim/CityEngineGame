@@ -1,13 +1,12 @@
-package game;
+package Game;
 
+import InputHandlers.KeyboardHandler;
+import LevelHandler.LevelOne;
+import LevelHandler.Levels;
 import city.cs.engine.*;
-import city.cs.engine.Shape;
-import inputHandlers.KeyboardHandler;
-//import inputHandlers.MouseHandler;
-import org.jbox2d.common.Vec2;
+//import Game.inputHandlers.MouseHandler;
 
 import javax.swing.JFrame;
-import java.awt.*;
 
 /**
  * A world with some bodies.
@@ -16,16 +15,21 @@ import java.awt.*;
 public class Game {
 
     /** The World in which the bodies move and interact. */
-    private WorldView world;
+    private Levels world;
 
     /** A graphical display of the world (a specialised JPanel). */
     private UserView view;
 
+    private int level;
+
     /** Initialise a new Game. */
-    private Game() {
+    public Game() {
 
         // make the world
-        world = new WorldView();
+        level = 1;
+        world = new LevelOne();
+        world.populateWorld(this);
+
 
         // make a view
         view = new UserView(world, 500, 500);
@@ -37,9 +41,9 @@ public class Game {
         //view.addMouseListener(new MouseHandler(view));
 
         // display the view in a frame
-        final JFrame frame = new JFrame("Game");
+        final JFrame frame = new JFrame("Peter's Game");
 
-        // quit the application when the game window is closed
+        // quit the application when the Game window is closed
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationByPlatform(true);
         // display the world in the window
@@ -48,7 +52,7 @@ public class Game {
         KeyboardHandler keyboardHandler = new KeyboardHandler(world, view);
         frame.addKeyListener(keyboardHandler);
 
-        // size the game window to fit the world view
+        // size the Game window to fit the world view
         frame.pack();
         // make the window visible
         frame.setVisible(true);
@@ -60,7 +64,33 @@ public class Game {
         world.start();
     }
 
-    /** Run the game. */
+    public WalkingMan getWalkingMan() {
+        return world.getWalkingMan();
+    }
+
+    public boolean currentLevelCompleted(){
+        return world.levelCompletion();
+    }
+
+    public void progressLevel(){
+        world.stop();
+        if (level == 3){
+            System.exit(0);
+            System.out.println("Game finished!");
+        }   else if (level == 1) {
+            level++;
+            //world = new LevelTwo();
+            world.populateWorld(this);
+            view.setWorld(world);
+            world.start();
+
+
+        }
+
+    }
+
+
+    /** Run the Game. */
     public static void main(String[] args) {
 
       new Game();
