@@ -1,25 +1,25 @@
 package LevelHandler;
 
+import Listeners.CoinPickup;
 import city.cs.engine.*;
 import city.cs.engine.Shape;
 import Game.Coins;
 import Game.Game;
 import org.jbox2d.common.Vec2;
 
-import java.awt.*;
 
 public class LevelOne extends Levels {
+    private static final int COINS = 4;
+
 
     @Override
     public void populateWorld(Game game) {
         super.populateWorld(game);
 
-
         // make the ground
         Shape shape = new BoxShape(20, 0.5f);
         StaticBody ground = new StaticBody(this, shape);
         ground.setPosition(new Vec2(0, -11.5f));
-        ground.setFillColor(Color.red);
 
         // make a platform
         Shape platform1Shape = new BoxShape(4, .5f);
@@ -30,34 +30,24 @@ public class LevelOne extends Levels {
         Body platform2 = new StaticBody(this, platform2Shape);
         platform2.setPosition(new Vec2(10,-4.5f));
 
-        //make a coin
-        Body coin = new Coins(this);
-        coin.setPosition(new Vec2(6, -10));
 
-        //make a coin
-        Body coin2 = new Coins(this);
-        coin2.setPosition(new Vec2(10, -10));
-
-        //make a coin
-        Body coin3 = new Coins(this);
-        coin3.setPosition(new Vec2(10, -3.5f));
-
-        //make a coin
-        Body coin4 = new Coins(this);
-        coin4.setPosition(new Vec2(-5, 4.5f));
+        for(int i = 0; i < COINS; i++){
+            Body coin = new Coins(this);
+            coin.setPosition(new Vec2(i * 4 - 8, 10));
+            coin.addCollisionListener(new CoinPickup(getWalkingMan()));
+        }
 
 
     }
 
     @Override
     public Vec2 portalPos() {
-        return new Vec2(-10.4f, -9.6f);
+        return new Vec2(-10.4f, -10f);
     }
 
     @Override
     public Vec2 startPos(){
         return new Vec2(1, -10);
-
     }
 
     @Override

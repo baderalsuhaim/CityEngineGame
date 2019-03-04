@@ -30,21 +30,16 @@ public class LevelTwo extends Levels {
         Body platform2 = new StaticBody(this, platform2Shape);
         platform2.setPosition(new Vec2(10,-4.5f));
 
-
-
-
     }
-
 
     @Override
     public Vec2 portalPos() {
-        return new Vec2(-10.4f, -9.6f);
+        return new Vec2(-10.4f, -10f);
     }
 
     @Override
-    public Vec2 startPos(){
+    public Vec2 startPos() {
         return new Vec2(1, -10);
-
     }
 
     @Override

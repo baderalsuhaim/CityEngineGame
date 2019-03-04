@@ -1,5 +1,6 @@
 package LevelHandler;
 
+
 import city.cs.engine.World;
 import Game.Game;
 import Game.Portal;
@@ -23,6 +24,7 @@ public abstract class Levels extends World {
         Portal portal = new Portal(this);
         portal.setPosition(portalPos());
         portal.addCollisionListener(new PortalListener(game));
+
     }
 
     public abstract Vec2 portalPos();

@@ -3,7 +3,8 @@ package Listeners;
 import city.cs.engine.CollisionEvent;
 import city.cs.engine.CollisionListener;
 import Game.Game;
-import Game.WalkingMan;
+
+import city.cs.engine.Walker;
 
 public class PortalListener implements CollisionListener {
     private Game game;
@@ -14,9 +15,8 @@ public class PortalListener implements CollisionListener {
 
     @Override
     public void collide(CollisionEvent e) {
-        WalkingMan walkingMan = game.getWalkingMan();
-        if (e.getOtherBody() == walkingMan && game.currentLevelCompleted()) {
-            System.out.println("Going to next level...");
+        if (e.getOtherBody() instanceof Walker ) {
+            System.out.println("Congratulations! You finished level " + game.getLevel() + "!");
             game.progressLevel();
         }
     }

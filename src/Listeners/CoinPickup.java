@@ -18,11 +18,10 @@ public class CoinPickup implements CollisionListener {
         this.walkingMan = walkingMan;
     }
 
-
     @Override
     public void collide(CollisionEvent e){
-        if(e.getOtherBody() instanceof Coins){
-            e.getOtherBody().destroy();
+        if(e.getOtherBody() == walkingMan){
+            e.getReportingBody().destroy();
             walkingMan.incrementCoinCount();
         }
     }

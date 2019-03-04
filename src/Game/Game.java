@@ -2,11 +2,13 @@ package Game;
 
 import InputHandlers.KeyboardHandler;
 import LevelHandler.LevelOne;
+import LevelHandler.LevelThree;
+import LevelHandler.LevelTwo;
 import LevelHandler.Levels;
 import city.cs.engine.*;
 //import Game.inputHandlers.MouseHandler;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
 /**
  * A world with some bodies.
@@ -18,9 +20,10 @@ public class Game {
     private Levels world;
 
     /** A graphical display of the world (a specialised JPanel). */
-    private UserView view;
+    private GameView view;
 
     private int level;
+    private KeyboardHandler keyboardHandler;
 
     /** Initialise a new Game. */
     public Game() {
@@ -32,7 +35,7 @@ public class Game {
 
 
         // make a view
-        view = new UserView(world, 500, 500);
+        view = new GameView(this.world, this.getWalkingMan(), 1280, 720);
 
         // uncomment this to draw a 1-metre grid over the view
         //view.setGridResolution(1);
@@ -49,7 +52,8 @@ public class Game {
         // display the world in the window
         frame.add(view);
         // adds the key listener so it listens for key input
-        KeyboardHandler keyboardHandler = new KeyboardHandler(world, view);
+
+        keyboardHandler = new KeyboardHandler(getWalkingMan());
         frame.addKeyListener(keyboardHandler);
 
         // size the Game window to fit the world view
@@ -62,28 +66,45 @@ public class Game {
 
         // start!
         world.start();
+        System.out.println("LEVEL 1 STARTING..");
+        System.out.println("COLLECT ALL THE COINS TO PROGRESS TO LEVEL 2");
+    }
+
+    public int getLevel(){
+        return this.level;
     }
 
     public WalkingMan getWalkingMan() {
         return world.getWalkingMan();
     }
 
+
     public boolean currentLevelCompleted(){
         return world.levelCompletion();
     }
 
+
     public void progressLevel(){
         world.stop();
-        if (level == 3){
-            System.exit(0);
-            System.out.println("Game finished!");
-        }   else if (level == 1) {
+        if (level == 1){
             level++;
-            //world = new LevelTwo();
+            world = new LevelTwo();
             world.populateWorld(this);
             view.setWorld(world);
+            keyboardHandler.defineWalker(getWalkingMan());
+            System.out.println("LEVEL 2 STARTING..");
             world.start();
-
+        }   else if (level == 2) {
+            level++;
+            world = new LevelThree();
+            world.populateWorld(this);
+            view.setWorld(world);
+            keyboardHandler.defineWalker(getWalkingMan());
+            System.out.println("LEVEL 3 STARTING..");
+            world.start();
+        } else {
+            System.out.println("Game finished!");
+            System.exit(0);
 
         }
 
@@ -94,6 +115,5 @@ public class Game {
     public static void main(String[] args) {
 
       new Game();
-
     }
 }

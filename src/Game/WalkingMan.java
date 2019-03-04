@@ -2,8 +2,6 @@ package Game;
 
 import city.cs.engine.*;
 import org.jbox2d.common.Vec2;
-import javax.swing.*;
-import java.awt.*;
 
 
 public class WalkingMan extends Walker {
@@ -12,12 +10,6 @@ public class WalkingMan extends Walker {
     private int health;
     private int stamina;
     private int coinCount;
-    private static final BodyImage walkImg = new BodyImage("data/Characters/Survivor.png");
-    private static final Vec2 vec2 = new Vec2(0,0);
-    private final AttachedImage walkerImg = new AttachedImage(this, walkImg,2.25f,0f, vec2);
-    private Component frame;
-
-
 
 
     public WalkingMan(World world, int health, int stamina) {
@@ -29,6 +21,8 @@ public class WalkingMan extends Walker {
                 0.798f,-0.474f, 0.546f,-1.086f, -0.741f,-1.047f));
                 this.stamina = stamina;
                 this.health = health;
+                addImage(new BodyImage("data/Characters/Survivor.png",
+                        2.5f));
                 coinCount = 0;
 
     }
