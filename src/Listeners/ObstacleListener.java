@@ -1,31 +1,26 @@
-/**
- * Coin pickup functionality to the Game
- */
 package Listeners;
 
+import Game.WalkingMan;
 import city.cs.engine.CollisionEvent;
 import city.cs.engine.CollisionListener;
-import Game.WalkingMan;
 
-public class CoinPickup implements CollisionListener {
+
+public class ObstacleListener implements CollisionListener {
 
     private WalkingMan walkingMan;
 
-    public CoinPickup(WalkingMan walkingMan){
+
+    public ObstacleListener(WalkingMan walkingMan){
         this.walkingMan = walkingMan;
     }
+
 
     @Override
     public void collide(CollisionEvent e){
         if(e.getOtherBody() == walkingMan){
-            e.getReportingBody().destroy();
-            walkingMan.incrementCoinCount();
+            walkingMan.decreaseLife();
+            walkingMan.isWalkerDead();
         }
     }
 
-
 }
-
-
-
-

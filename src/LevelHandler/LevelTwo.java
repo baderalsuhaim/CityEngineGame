@@ -1,10 +1,10 @@
 package LevelHandler;
 
 import Game.Game;
-import city.cs.engine.Body;
-import city.cs.engine.BoxShape;
+import Listeners.CoinPickup;
+import Listeners.ObstacleListener;
+import city.cs.engine.*;
 import city.cs.engine.Shape;
-import city.cs.engine.StaticBody;
 import org.jbox2d.common.Vec2;
 
 import java.awt.*;
@@ -12,33 +12,45 @@ import java.awt.*;
 public class LevelTwo extends Levels {
 
     @Override
-        public void populateWorld(Game Game){
-        super.populateWorld(Game);
+        public void fillWorld(Game Game){
+        super.fillWorld(Game);
 
 
-        Shape shape = new BoxShape(20, 0.5f);
+        // make the ground
+        Shape shape = new BoxShape(500, 0.5f);
         StaticBody ground = new StaticBody(this, shape);
         ground.setPosition(new Vec2(0, -11.5f));
-        ground.setFillColor(Color.red);
+        ground.addImage(new BodyImage("data/Objects/1x1-00000000.png"));
 
         // make a platform
         Shape platform1Shape = new BoxShape(4, .5f);
         Body platform1 = new StaticBody(this, platform1Shape);
         platform1.setPosition(new Vec2(-5, 3.5f));
 
+        //make a platform
         Shape platform2Shape = new BoxShape(10,.5f);
         Body platform2 = new StaticBody(this, platform2Shape);
         platform2.setPosition(new Vec2(10,-4.5f));
 
+        Shape platform3Shape = new BoxShape(8,.5f);
+        Body platform3 = new StaticBody(this, platform3Shape);
+        platform3.setPosition(new Vec2(-30,-4.5f));
+
+        Shape platform4Shape = new BoxShape(8,.5f);
+        Body platform4 = new StaticBody(this, platform4Shape);
+        platform4.setPosition(new Vec2(-35,3.5f));
+
+
+
     }
 
     @Override
-    public Vec2 portalPos() {
+    public Vec2 portalPosition() {
         return new Vec2(-10.4f, -10f);
     }
 
     @Override
-    public Vec2 startPos() {
+    public Vec2 startPosition() {
         return new Vec2(1, -10);
     }
 

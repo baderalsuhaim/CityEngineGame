@@ -1,10 +1,8 @@
 package LevelHandler;
 
 import Game.Game;
-import city.cs.engine.Body;
-import city.cs.engine.BoxShape;
+import city.cs.engine.*;
 import city.cs.engine.Shape;
-import city.cs.engine.StaticBody;
 import org.jbox2d.common.Vec2;
 
 import java.awt.*;
@@ -12,13 +10,13 @@ import java.awt.*;
 public class LevelThree extends Levels {
 
     @Override
-    public void populateWorld(Game Game){
-        super.populateWorld(Game);
+    public void fillWorld(Game Game){
+        super.fillWorld(Game);
 
-        Shape shape = new BoxShape(20, 0.5f);
+        Shape shape = new BoxShape(500, 0.5f);
         StaticBody ground = new StaticBody(this, shape);
         ground.setPosition(new Vec2(0, -11.5f));
-        ground.setFillColor(Color.red);
+        ground.addImage(new BodyImage("data/Objects/1x1-00000000.png"));
 
         // make a platform
         Shape platform1Shape = new BoxShape(4, .5f);
@@ -36,12 +34,12 @@ public class LevelThree extends Levels {
 
 
     @Override
-    public Vec2 portalPos() {
+    public Vec2 portalPosition() {
         return new Vec2(-10.4f, -10f);
     }
 
     @Override
-    public Vec2 startPos(){
+    public Vec2 startPosition(){
         return new Vec2(1, -10);
     }
 

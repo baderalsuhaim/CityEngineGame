@@ -2,9 +2,6 @@
  * Placeholder for a bullet object that will be made for future milestones, allowing the walker
  * to shoot the enemies who guard the coins
  */
-
-
-
 package Game;
 
 import city.cs.engine.CircleShape;

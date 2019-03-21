@@ -22,13 +22,14 @@ public class KeyboardHandler extends KeyAdapter {
 
     @Override
     public void keyPressed(KeyEvent e) {
+        walkerObj.setGravityScale(4);
         int code = e.getKeyCode();
         if (code == KeyEvent.VK_A) {
             walkerObj.startWalking(-WALK_SPEED);
         } else if (code == KeyEvent.VK_D) {
             walkerObj.startWalking(WALK_SPEED);
         } else if (code == KeyEvent.VK_W) {
-            walkerObj.jump(23f);
+            walkerObj.jump(28f);
         }
     }
 
