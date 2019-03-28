@@ -9,9 +9,6 @@ import Listeners.FollowPlayer;
 import city.cs.engine.SoundClip;
 
 import java.awt.*;
-import java.io.IOException;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 
 //import Game.inputHandlers.MouseHandler;
 
@@ -39,20 +36,20 @@ public class Game {
 
         // make the world
         level = 1;
-        world = new LevelOne();
+        world = new LevelOne(this);
+
+        world.createPlayer(this);
+
+        // adds the key listener so it listens for key input
+        keyboardHandler = new KeyboardHandler(world.getWalkingMan());
+
+        view = new GameView(world, world.getWalkingMan(), 960, 640);
+
         world.fillWorld(this);
 
-        // add background music in a loop
-        try {
-            backgroundMusic = new SoundClip("data/Sounds/backgroundMusic.wav");
-            backgroundMusic.loop();
-            backgroundMusic.setVolume(.2d);
-        } catch (UnsupportedAudioFileException|IOException|LineUnavailableException e) {
-            System.out.println(e);
-        }
-
-        // make a view
-        view = new GameView(this.world, this.getWalkingMan(), 960, 640);
+        // display the view in a frame
+        JFrame frame = new JFrame("Game");
+        frame.addKeyListener(keyboardHandler);
 
         // uncomment this to draw a 1-metre grid over the view
         //view.setGridResolution(1);
@@ -60,8 +57,6 @@ public class Game {
         // add mouse listener
         //view.addMouseListener(new MouseHandler(view));
 
-        // display the view in a frame
-        JFrame frame = new JFrame("Peter's Game");
 
         // quit the application when the Game window is closed
 
@@ -72,9 +67,6 @@ public class Game {
         frame.add(view, BorderLayout.CENTER);
         frame.pack();
 
-        // adds the key listener so it listens for key input
-        keyboardHandler = new KeyboardHandler(getWalkingMan());
-        frame.addKeyListener(keyboardHandler);
 
         // add buttons
         //frame.add(new ControlPanel(), BorderLayout.SOUTH);
@@ -106,10 +98,6 @@ public class Game {
         return this.level;
     }
 
-    public WalkingMan getWalkingMan() {
-        return world.getWalkingMan();
-    }
-
     public boolean currentLevelCompleted(){
         return world.levelCompletion();
     }
@@ -120,19 +108,21 @@ public class Game {
         world.stop();
         if (level == 1){
             level++;
-            world = new LevelTwo();
+            world = new LevelTwo(this);
+            world.createPlayer(this);
             world.fillWorld(this);
             view.setWorld(world);
-            keyboardHandler.defineWalker(getWalkingMan());
+            keyboardHandler.defineWalker(world.getWalkingMan());
             System.out.println("LEVEL 2 STARTING..");
             world.addStepListener(new FollowPlayer(view, world.getWalkingMan()));
             world.start();
         }   else if (level == 2) {
             level++;
-            world = new LevelThree();
+            world = new LevelThree(this);
+            world.createPlayer(this);
             world.fillWorld(this);
             view.setWorld(world);
-            keyboardHandler.defineWalker(getWalkingMan());
+            keyboardHandler.defineWalker(world.getWalkingMan());
             System.out.println("LEVEL 3 STARTING..");
             world.addStepListener(new FollowPlayer(view, world.getWalkingMan()));
             world.start();
@@ -144,9 +134,20 @@ public class Game {
 
     }
 
+    public GameView getGameView() {
+        if(view == null){
+            System.out.println("Null boy");
+            System.exit(0);
+        }
+        return view;
+    }
+
+    public Levels getWorld() {
+        return world;
+    }
+
     /** Run the Game. */
     public static void main(String[] args) {
-
       new Game();
     }
 }

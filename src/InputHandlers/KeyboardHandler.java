@@ -1,5 +1,6 @@
 package InputHandlers;
 
+import Game.WalkingMan;
 import city.cs.engine.*;
 //import Game.Bullet;
 import org.jbox2d.common.Vec2;
@@ -13,9 +14,9 @@ import java.awt.event.KeyEvent;
 public class KeyboardHandler extends KeyAdapter {
     private static final float WALK_SPEED = 6;
 
-    private Walker walkerObj;
+    private WalkingMan walkerObj;
 
-    public KeyboardHandler(Walker walkerObj) {
+    public KeyboardHandler(WalkingMan walkerObj) {
         this.walkerObj = walkerObj;
     }
 
@@ -46,8 +47,11 @@ public class KeyboardHandler extends KeyAdapter {
 
     }
 
+    public WalkingMan getWalkerObj() {
+        return walkerObj;
+    }
 
-    public void defineWalker(Walker walkerObj){
+    public void defineWalker(WalkingMan walkerObj){
         this.walkerObj = walkerObj;
 
     }

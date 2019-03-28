@@ -9,17 +9,25 @@ import Game.Game;
 import Game.Obstacle;
 import org.jbox2d.common.Vec2;
 
-
+import javax.swing.*;
+import java.awt.*;
 
 
 public class LevelOne extends Levels {
     private static final int COINS = 8;
 
-
+    public LevelOne(Game game){
+        super();
+    }
 
     @Override
     public void fillWorld(Game game) {
         super.fillWorld(game);
+
+
+        String backgroundPath = "./data/Backgrounds/cityBG.gif";
+        Image background = new ImageIcon(backgroundPath).getImage();
+        game.getGameView().setBackground(background);
 
         // make the ground
         Shape shape = new BoxShape(500, 0.5f);
@@ -27,11 +35,10 @@ public class LevelOne extends Levels {
         ground.setPosition(new Vec2(0, -11.5f));
         ground.addImage(new BodyImage("data/Objects/1x1-00000000.png"));
 
-    // make a platform
+        // make a platform
         Shape platform1Shape = new BoxShape(4, .5f);
         Body platform1 = new StaticBody(this, platform1Shape);
         platform1.setPosition(new Vec2(-5, 3.5f));
-
 
         //make a platform
         Shape platform2Shape = new BoxShape(10,.5f);

@@ -22,6 +22,7 @@ public class WalkingMan extends Walker {
         super(world, new PolygonShape(-0.744f,-1.026f, -0.933f,0.651f,
                 -0.276f,1.11f, 0.288f,1.062f, 1.002f,0.468f,
                 0.798f,-0.474f, 0.546f,-1.086f, -0.741f,-1.047f));
+
                 this.stamina = stamina;
                 this.health = health;
                 addImage(new BodyImage("data/Animations/idle.gif",
@@ -51,10 +52,6 @@ public class WalkingMan extends Walker {
         this.addImage(new BodyImage("data/Animations/idle.gif",
                 2.5f));
     }
-
-
-
-
 
     // returns the value of health
     public int getHealth(){

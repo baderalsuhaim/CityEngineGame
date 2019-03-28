@@ -7,13 +7,22 @@ import city.cs.engine.*;
 import city.cs.engine.Shape;
 import org.jbox2d.common.Vec2;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class LevelTwo extends Levels {
 
+
+    public LevelTwo(Game game){
+        super();
+    }
     @Override
-        public void fillWorld(Game Game){
-        super.fillWorld(Game);
+        public void fillWorld(Game game){
+        super.fillWorld(game);
+
+        String backgroundPath = "./data/Backgrounds/cityBGL2.gif";
+        Image background = new ImageIcon(backgroundPath).getImage();
+        game.getGameView().setBackground(background);
 
 
         // make the ground

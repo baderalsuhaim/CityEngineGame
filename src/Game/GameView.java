@@ -16,8 +16,6 @@ public class GameView extends UserView {
     public GameView(World world, WalkingMan walkingMan, int width, int height) {
         super(world, width, height);
         this.walkingMan = walkingMan;
-        this.background = new ImageIcon("data/Backgrounds/cityBg.gif").getImage();
-
     }
 
 
@@ -32,6 +30,10 @@ public class GameView extends UserView {
         g.drawString("COIN COUNT: " + walkingMan.getCoinCount(), (getWidth()/2) - 50, 20);
 
 
+    }
+
+    public void setBackground(Image background) {
+        this.background = background;
     }
 
 }
