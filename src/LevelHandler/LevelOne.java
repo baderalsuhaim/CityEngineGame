@@ -1,6 +1,6 @@
 package LevelHandler;
 
-import Game.Main;
+import Game.Game;
 import Listeners.CoinPickup;
 import Listeners.ObstacleListener;
 import city.cs.engine.*;
@@ -16,12 +16,12 @@ import java.awt.*;
 public class LevelOne extends Levels {
     private static final int COINS = 8;
 
-    public LevelOne(Main game){
+    public LevelOne(Game game){
         super();
     }
 
     @Override
-    public void fillWorld(Main game) {
+    public void fillWorld(Game game) {
         super.fillWorld(game);
 
 

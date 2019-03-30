@@ -1,10 +1,13 @@
-# JavaProj
-2nd term project for the "Programming in Java" module at City, University of London.
+# City Engine Game - 1st year final project
+
+## About the game
+The game is my 1st year final project for the "Programming in Java" module at City, University of London.
 
 The task is to create a simple 2D Game using the engine provided
 by the university based on the JBOX2D engine
 for Java. 
 
+## Objectives
 The objective of the Game so far is to make the controllable
 Walker collect all the coins spawned in the world, which
 right now are spawned at hard coded positions, but will

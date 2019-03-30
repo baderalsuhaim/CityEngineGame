@@ -4,12 +4,12 @@ package ButtonActions;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import Game.Main;
+import Game.Game;
 
 import javax.swing.*;
 
 public class ControlsButton extends JPanel implements ActionListener {
-    private Main main;
+    private Game main;
     Component frame;
 
     @Override

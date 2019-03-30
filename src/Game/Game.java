@@ -9,14 +9,20 @@ import LevelHandler.Levels;
 import Listeners.FollowPlayer;
 import city.cs.engine.SoundClip;
 
+
 import java.awt.*;
+import java.io.IOException;
 
-//import Main.inputHandlers.MouseHandler;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 
+/**
+ * A world with some bodies.
+ */
 
-public class Main {
+public class Game {
 
     /** The World in which the bodies move and interact. */
     private Levels world;
@@ -26,16 +32,23 @@ public class Main {
 
     private int level;
     private KeyboardHandler keyboardHandler;
+    private SoundClip backgroundMusic;
     private MouseHandler mouseHandler;
 
-    private Bullet bullet;
-
-    /** Initialise a new Main. */
-    public Main() {
+    /** Initialise a new Game. */
+    public Game() {
 
         // Make the world
         level = 1;
         world = new LevelOne(this);
+
+        try {
+            backgroundMusic = new SoundClip("data/Sounds/PimPoyPocket.wav");   // Open an audio input stream
+            backgroundMusic.setVolume(0.02d);
+            backgroundMusic.loop();  // Set it to continous playback (looping)
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            System.out.println(e);
+        }
 
         // Create the player
         world.createPlayer(this);
@@ -46,9 +59,10 @@ public class Main {
         // Fill the world with props
         world.fillWorld(this);
 
-        // Display the view in a frame adn add the key listener
+        // Display the view in a frame and add the key listener
         JFrame frame = new JFrame("Game");
-        frame.addKeyListener(new KeyboardHandler(world.getWalkingMan()));
+        keyboardHandler = new KeyboardHandler(world.getWalkingMan());
+        frame.addKeyListener(keyboardHandler);
 
         // Add the mouse listener
         view.addMouseListener(new MouseHandler(getWorld()));
@@ -125,19 +139,18 @@ public class Main {
 
     public GameView getGameView() {
         if(view == null){
-            System.out.println("Null");
+            System.out.println("Null boy");
             System.exit(0);
         }
         return view;
     }
 
     public Levels getWorld() {
-        System.out.println(world);
-        return this.world;
+        return world;
     }
 
-    /** Run the Main. */
+    /** Run the Game. */
     public static void main(String[] args) {
-      new Main();
+        new Game();
     }
 }

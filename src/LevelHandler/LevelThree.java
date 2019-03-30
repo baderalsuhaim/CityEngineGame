@@ -1,6 +1,6 @@
 package LevelHandler;
 
-import Game.Main;
+import Game.Game;
 import city.cs.engine.*;
 import city.cs.engine.Shape;
 import org.jbox2d.common.Vec2;
@@ -10,12 +10,12 @@ import java.awt.*;
 
 public class LevelThree extends Levels {
 
-    public LevelThree(Main game){
+    public LevelThree(Game game){
         super();
     }
 
     @Override
-    public void fillWorld(Main game){
+    public void fillWorld(Game game){
         super.fillWorld(game);
 
         String backgroundPath = "./data/Backgrounds/cityBGL3.gif";

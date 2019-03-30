@@ -2,7 +2,7 @@ package Game;
 
 import city.cs.engine.*;
 import org.jbox2d.common.Vec2;
-import InputHandlers.KeyboardHandler;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,8 +14,7 @@ public class WalkingMan extends Walker {
     private int health;
     private int stamina;
     private int coinCount;
-    private KeyboardHandler keyboardHandler;
-    private Component frame;
+    Component frame;
 
 
     public WalkingMan(World world, int health, int stamina) {
@@ -24,11 +23,11 @@ public class WalkingMan extends Walker {
                 -0.276f,1.11f, 0.288f,1.062f, 1.002f,0.468f,
                 0.798f,-0.474f, 0.546f,-1.086f, -0.741f,-1.047f));
 
-                this.stamina = stamina;
-                this.health = health;
-                addImage(new BodyImage("data/Animations/idle.gif",
-                        2.5f));
-                coinCount = 0;
+        this.stamina = stamina;
+        this.health = health;
+        addImage(new BodyImage("data/Animations/idle.gif",
+                2.5f));
+        coinCount = 0;
 
 
     }
@@ -48,12 +47,10 @@ public class WalkingMan extends Walker {
 
     @Override
     public void stopWalking(){
-            super.stopWalking();
-            this.removeAllImages();
-            AttachedImage idle = new AttachedImage(this, new BodyImage("data/Animations/idle.gif",
-                    2.5f), 1f, 0, new Vec2(0, 0));
-
-
+        super.stopWalking();
+        this.removeAllImages();
+        this.addImage(new BodyImage("data/Animations/idle.gif",
+                2.5f));
     }
 
     // returns the value of health
@@ -86,7 +83,7 @@ public class WalkingMan extends Walker {
 
     public void isWalkerDead(){
         if(getHealth() == 0 && getStamina() == 0){
-            JOptionPane.showMessageDialog(frame, "Main over", "Main over", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(frame, "Game over", "Game over", JOptionPane.ERROR_MESSAGE);
             System.exit(0);
         }
     }

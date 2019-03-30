@@ -22,6 +22,7 @@ public class ControlPanel extends JPanel implements ChangeListener {
         this.controlsButton.addActionListener(new ControlsButton());
         this.add(this.controlsButton).setFocusable(false);
         this.add(this.quitButton).setFocusable(false);
+
     }
 
     @Override

@@ -2,24 +2,24 @@ package InputHandlers;
 
 import Game.WalkingMan;
 import city.cs.engine.*;
-//import Main.Bullet;
+import Game.Bullet;
 import org.jbox2d.common.Vec2;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import Game.Main;
 
-import javax.security.auth.kerberos.KerberosTicket;
+
 
 
 public class KeyboardHandler extends KeyAdapter {
-    private static final float WALK_SPEED = 8;
+    private static final float WALK_SPEED = 6;
 
     private WalkingMan walkerObj;
 
     public KeyboardHandler(WalkingMan walkerObj) {
         this.walkerObj = walkerObj;
     }
+
 
     @Override
     public void keyPressed(KeyEvent e) {
@@ -47,13 +47,13 @@ public class KeyboardHandler extends KeyAdapter {
 
     }
 
-
+    public WalkingMan getWalkerObj() {
+        return walkerObj;
+    }
 
     public void defineWalker(WalkingMan walkerObj){
         this.walkerObj = walkerObj;
 
     }
-
 }
-
 
