@@ -1,11 +1,11 @@
 package LevelHandler;
 
+import Game.Main;
 import Listeners.CoinPickup;
 import Listeners.ObstacleListener;
 import city.cs.engine.*;
 import city.cs.engine.Shape;
 import Game.Coins;
-import Game.Game;
 import Game.Obstacle;
 import org.jbox2d.common.Vec2;
 
@@ -16,12 +16,12 @@ import java.awt.*;
 public class LevelOne extends Levels {
     private static final int COINS = 8;
 
-    public LevelOne(Game game){
+    public LevelOne(Main game){
         super();
     }
 
     @Override
-    public void fillWorld(Game game) {
+    public void fillWorld(Main game) {
         super.fillWorld(game);
 
 

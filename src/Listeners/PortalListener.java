@@ -1,15 +1,15 @@
 package Listeners;
 
+import Game.Main;
 import city.cs.engine.CollisionEvent;
 import city.cs.engine.CollisionListener;
-import Game.Game;
 import city.cs.engine.Walker;
 
 
 public class PortalListener implements CollisionListener {
-    private Game game;
+    private Main game;
 
-    public PortalListener(Game game) {
+    public PortalListener(Main game) {
         this.game = game;
     }
 

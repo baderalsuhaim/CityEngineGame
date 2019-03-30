@@ -1,35 +1,34 @@
-/**
- * In the future this will make new platforms upon mouse press for the character to escape
- */
+package InputHandlers;
 
-/*package Game.inputHandlers;
-
-import city.cs.engine.*;
+import Game.Bullet;
+import Game.WalkingMan;
+import LevelHandler.Levels;
+import city.cs.engine.Body;
+import org.jbox2d.common.Vec2;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+
 public class MouseHandler extends MouseAdapter {
 
-    private static final float RADIUS = 0.5f;
-    
-    private static final Shape platShape = new BoxShape(4,.5f);
-    
 
-    
-    private LevelOne view;
+    private Levels world;
 
-    public MouseHandler(LevelOne view) {
 
-        this.view = view;
+    public MouseHandler(Levels world){
+        this.world = world;
     }
 
+    @Override
+    public void mousePressed(MouseEvent e){
 
-   public void mousePressed(MouseEvent e) {
-        DynamicBody ball = new DynamicBody(view.getWorld(), platShape);
-        ball.setPosition(view.viewToWorld(e.getPoint()));
+        Bullet bullet = new Bullet(world);
+        bullet.setPosition(world.getWalkingMan().getPosition());
+
 
     }
 
-} */
+}
+
 

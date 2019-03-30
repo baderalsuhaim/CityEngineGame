@@ -1,5 +1,5 @@
 /**
- * Coin pickup functionality to the Game
+ * Coin pickup functionality to the Main
  */
 package Listeners;
 
