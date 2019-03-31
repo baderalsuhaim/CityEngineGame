@@ -1,6 +1,8 @@
 package LevelHandler;
 
 import Game.Game;
+import Game.Coins;
+import Listeners.CoinPickup;
 import city.cs.engine.*;
 import city.cs.engine.Shape;
 import org.jbox2d.common.Vec2;
@@ -9,6 +11,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class LevelTwo extends Levels {
+    private static final int COINS = 8;
 
 
     public LevelTwo(Game game){
@@ -59,6 +62,7 @@ public class LevelTwo extends Levels {
     public Vec2 startPosition() {
         return new Vec2(1, -10);
     }
+
 
     @Override
     public boolean levelCompletion(){

@@ -18,7 +18,7 @@ public class ControlPanel extends JPanel implements ChangeListener {
     private JButton loadButton;
     private JButton saveButton;
 
-    public ControlPanel(Levels world, WalkingMan walkingMan) {
+    public ControlPanel(Levels world, WalkingMan walkingMan, Game game) {
         super();
         this.quitButton = new JButton("Quit");
         this.quitButton.addActionListener(new QuitGame());
@@ -27,7 +27,7 @@ public class ControlPanel extends JPanel implements ChangeListener {
         this.controlsButton.addActionListener(new ControlsButton());
 
         this.loadButton = new JButton("Load File");
-        this.loadButton.addActionListener(new LoadFile(world, walkingMan));
+        this.loadButton.addActionListener(new LoadFile(world, walkingMan, game));
 
         this.saveButton = new JButton("Save File");
         this.saveButton.addActionListener(new SaveFile(world, walkingMan));

@@ -15,8 +15,6 @@ public abstract class Levels extends World {
 
     Levels(){
         super(60);
-
-
     }
 
     public void createPlayer(Game game) {
@@ -45,6 +43,7 @@ public abstract class Levels extends World {
     public abstract Vec2 portalPosition();
     //method for  determining the start position of the player in each level
     public abstract Vec2 startPosition();
+
     //method for setting a level's objectives that the player needs to achieve in order to progress
     public abstract boolean levelCompletion();
 }

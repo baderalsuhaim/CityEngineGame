@@ -84,7 +84,7 @@ public class Game {
         frame.setVisible(true);
 
         // Adds the control panel with buttons
-        frame.add(new ControlPanel(world, world.getWalkingMan()), BorderLayout.NORTH);
+        frame.add(new ControlPanel(world, world.getWalkingMan(), this), BorderLayout.NORTH);
         frame.pack();
 
         //uncomment this to make a debugging view

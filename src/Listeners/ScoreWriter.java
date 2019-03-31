@@ -21,9 +21,9 @@ public class ScoreWriter {
     }
 
     public void saveFile() throws IOException {
-        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+        DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy-HH-mm-ss");
         Date date = new Date();
-        String fileName = formatter.format(date) + ".txt";
+        String fileName = formatter.format(date) + ".csv";
         FileWriter writer = null;
         try {
             writer = new FileWriter(fileName);
