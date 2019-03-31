@@ -15,10 +15,10 @@ public class PortalListener implements CollisionListener {
 
     @Override
     public void collide(CollisionEvent e) {
-        if (e.getOtherBody() instanceof Walker ) {
+        if (e.getOtherBody() instanceof Walker && game.currentLevelCompleted()) {
             System.out.println("Congratulations! You finished level " + game.getLevel() + "!");
             game.progressLevel();
-        } else if (e.getOtherBody() instanceof Walker )  {
+        } else if (e.getOtherBody() instanceof Walker && !game.currentLevelCompleted())  {
             System.out.println("Level not completed! Collect all coins!");
         }
     }

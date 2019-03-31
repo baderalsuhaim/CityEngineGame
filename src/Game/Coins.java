@@ -4,6 +4,7 @@
 
 package Game;
 
+import LevelHandler.Levels;
 import city.cs.engine.*;
 import org.jbox2d.common.Vec2;
 
@@ -28,7 +29,7 @@ public class Coins extends DynamicBody {
     }
 
     //makes the coin object
-    public Coins(World world){
+    public Coins(Levels world){
         super(world, new BoxShape(.9f,.9f));
         new AttachedImage
                 (this, new BodyImage("data/Objects/Coin.gif"),2f,0,new Vec2(0,0));

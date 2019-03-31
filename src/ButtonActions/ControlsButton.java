@@ -9,7 +9,6 @@ import Game.Game;
 import javax.swing.*;
 
 public class ControlsButton extends JPanel implements ActionListener {
-    private Game main;
     Component frame;
 
     @Override

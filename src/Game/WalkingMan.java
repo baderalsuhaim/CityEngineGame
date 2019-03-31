@@ -57,15 +57,28 @@ public class WalkingMan extends Walker {
     public int getHealth(){
         return this.health;
     }
+
     //returns the value of stamina
     public int getStamina(){
         return this.stamina;
     }
+
     //returns the value of coin count
     public int getCoinCount(){
         return this.coinCount;
     }
 
+    public void setScore(int coinCount) {
+        this.coinCount = coinCount;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public void setStamina(int stamina) {
+        this.stamina = stamina;
+    }
 
 
     public void incrementCoinCount(){

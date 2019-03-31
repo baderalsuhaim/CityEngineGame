@@ -34,7 +34,7 @@ public class Game {
     private KeyboardHandler keyboardHandler;
     private SoundClip backgroundMusic;
     private MouseHandler mouseHandler;
-
+    private double volume;
     /** Initialise a new Game. */
     public Game() {
 
@@ -42,12 +42,15 @@ public class Game {
         level = 1;
         world = new LevelOne(this);
 
+        /* Making the background music. The code first tries to run code in the try {}, and if any of the exceptions defined in
+         the catch {} occur, it prints the error to the console instead of crashing the game or throwing an exception */
         try {
-            backgroundMusic = new SoundClip("data/Sounds/PimPoyPocket.wav");   // Open an audio input stream
-            backgroundMusic.setVolume(0.02d);
-            backgroundMusic.loop();  // Set it to continous playback (looping)
+            backgroundMusic = new SoundClip("data/Sounds/PimPoyPocket.wav"); // Open the audio file from the path given
+            this.volume = .02d;
+            backgroundMusic.setVolume(volume); // Set its volume to .02
+            backgroundMusic.loop();  // Makes the audio loop forever
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-            System.out.println(e);
+            System.out.println(e); // Print the error to the console
         }
 
         // Create the player
@@ -81,7 +84,7 @@ public class Game {
         frame.setVisible(true);
 
         // Adds the control panel with buttons
-        frame.add(new ControlPanel(world), BorderLayout.NORTH);
+        frame.add(new ControlPanel(world, world.getWalkingMan()), BorderLayout.NORTH);
         frame.pack();
 
         //uncomment this to make a debugging view
@@ -95,21 +98,35 @@ public class Game {
 
     }
 
+    // A accessor method to return the current level
     public int getLevel(){
         return this.level;
     }
 
+    public double getVolume(){
+        return this.volume;
+    }
+
+    public void setVolume(double vol){
+        this.volume = vol;
+        this.backgroundMusic.setVolume(vol);
+    }
+
+    /* A boolean that checks whether the current level is completed, which returns the levelCompletion function from the common
+    Levels class, and which is defined in each individual level by @Override */
     public boolean currentLevelCompleted(){
         return world.levelCompletion();
     }
 
-
     /**
-     * A function to progress levels upon completion of each level's goals
+     * A function to progress levels upon completion of each level's goals. It stops the current world, and increases the current level,
+     * fills the new world with platforms, ground, coins etc. and assigns all the listeners and player to the new world.
+     * When the last level, level 3 is completed, it exits the game.
      */
     public void progressLevel(){
         world.stop();
-        if (level == 1){ // if current level is 1
+        // executes this block if current level is one
+        if (level == 1){
             level++; // increase the level
             world = new LevelTwo(this); // make level two the new world
             world.createPlayer(this); // create the player inside the world
@@ -119,6 +136,7 @@ public class Game {
             System.out.println("LEVEL 2 STARTING.."); // print out the console output
             world.addStepListener(new FollowPlayer(view, world.getWalkingMan())); // add the step listener to make the camera follow the player
             world.start(); // start the world
+            // executes this block if current level is two
         }   else if (level == 2) {
             level++;
             world = new LevelThree(this);
@@ -129,8 +147,9 @@ public class Game {
             System.out.println("LEVEL 3 STARTING..");
             world.addStepListener(new FollowPlayer(view, world.getWalkingMan()));
             world.start();
-        } else {
-            System.out.println("Main finished!");
+            // executes this block if current level is three, and exits the game, as level three is the last level
+        }  else {
+            System.out.println("Game finished!");
             System.exit(0);
 
         }

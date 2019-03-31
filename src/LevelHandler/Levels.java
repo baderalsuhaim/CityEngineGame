@@ -3,6 +3,7 @@ package LevelHandler;
 import city.cs.engine.World;
 import Game.Game;
 import Game.Portal;
+import Game.GameView;
 import Listeners.PortalListener;
 import Game.WalkingMan;
 import org.jbox2d.common.Vec2;
@@ -10,9 +11,12 @@ import org.jbox2d.common.Vec2;
 public abstract class Levels extends World {
     private WalkingMan walkingMan;
     private World world;
+    private GameView view;
 
     Levels(){
         super(60);
+
+
     }
 
     public void createPlayer(Game game) {

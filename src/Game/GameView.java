@@ -10,9 +10,6 @@ public class GameView extends UserView {
     private WalkingMan walkingMan;
     private Image background;
 
-
-
-
     public GameView(World world, WalkingMan walkingMan, int width, int height) {
         super(world, width, height);
         this.walkingMan = walkingMan;
