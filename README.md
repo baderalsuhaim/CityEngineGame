@@ -23,3 +23,5 @@ to the next level, the player needs to go through the portal, which
 is not active until all the objectives have been met.
 
 The game is controlled using A/D for moving left/right and W for jumping.
+
+The physics engine is not included in this repo, as it is the property of City, University of London. For that reason, this game cannot be cloned and ran by people not having access to the engine.
